@@ -1,0 +1,11 @@
+latest_confirmed_topic: /qrc/sensing/latest_confirmed_json
+latest_confirmed_overlay_topic: /qrc/sensing/latest_confirmed_overlay/image_raw
+status_topic: /qrc/sensing/status
+panel_image_topic: /qrc/sensing/result_panel/image_raw
+publish_panel_image: true
+show_window: true
+window_name: Latest Confirmed Result Window
+refresh_fps: 2.0
+stale_threshold_sec: 10.0
+panel_width: 900
+panel_height: 500

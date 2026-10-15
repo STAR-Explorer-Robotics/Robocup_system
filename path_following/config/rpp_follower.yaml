@@ -1,0 +1,64 @@
+rpp_follower_node:
+  ros__parameters:
+    topics:
+      path: /trg/output/path
+      odom: /laser_odometry
+      cmd_vel: /cmd_vel
+      lookahead: /rpp/lookahead_point
+      debug: /rpp/debug
+      state: /rpp/state
+    services:
+      set_enabled: /rpp/set_enabled
+
+    control:
+      rate_hz: 30.0
+      enabled_on_start: true
+      holonomic: true
+      publish_debug: true
+      publish_zero_on_stop: true
+
+    speed:
+      desired: 0.45
+      min_tracking: 0.05
+      max_forward: 0.7
+      max_lateral: 0.50
+      max_yaw_rate: 0.8
+      accel_limit: 0.6
+      lateral_accel_limit: 0.7
+      yaw_accel_limit: 1.0
+
+    lookahead:
+      distance: 0.55
+      time: 0.1
+      min_distance: 0.25
+      max_distance: 0.9
+
+    tracking:
+      mode: vector_field
+      yaw_gain: 1.2
+      # Used by pure_pursuit mode. The default vector_field mode uses the
+      # path-tube terms below for cross-track correction.
+      lateral_gain: 1.0
+      path_tube_gain: 1.6
+      path_tube_max_correction_speed: 0.50
+      path_tube_deadband: 0.03
+      heading_error_slowdown_angle: 1.2
+      rotate_in_place_angle: 2.2
+
+    regulation:
+      min_turning_radius: 0.8
+      min_speed_scale: 0.2
+      approach_slowdown_distance: 1.2
+      deviation_slowdown_distance: 0.8
+      deviation_stop_distance: 1.5
+      goal_tolerance: 0.4
+    goal:
+      use_final_yaw: false
+      yaw_tolerance: 0.12
+      yaw_gain: 1.2
+
+    watchdog:
+      odom_timeout_sec: 0.5
+      # TRG may publish a valid global path only when planning changes.
+      # Keep this disabled unless another node republishes the active path.
+      path_timeout_sec: 0.0

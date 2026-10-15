@@ -1,0 +1,119 @@
+name: qrc_sensing_release
+
+x-inspection-environment: &inspection-environment
+  HOST_UID: "${HOST_UID:-1000}"
+  HOST_GID: "${HOST_GID:-1000}"
+  DISPLAY: "${DISPLAY:-}"
+  QT_X11_NO_MITSHM: "1"
+  QRC_RUNTIME_MODEL_ROOT: "${QRC_RUNTIME_MODEL_ROOT:-}"
+  QRC_OUTPUT_ROOT: "${QRC_OUTPUT_ROOT:-}"
+  QRC_CONFIG_ROOT: "${QRC_CONFIG_ROOT:-}"
+
+x-ros2-environment: &ros2-environment
+  DISPLAY: "${DISPLAY:-}"
+  HOST_UID: "${HOST_UID:-1000}"
+  HOST_GID: "${HOST_GID:-1000}"
+  LIBGL_ALWAYS_SOFTWARE: "1"
+  ROS_DOMAIN_ID: "${ROS_DOMAIN_ID:-0}"
+  ROS_LOG_DIR: "/workspace/qrc_ros2_perception/log/ros"
+  RMW_IMPLEMENTATION: "${RMW_IMPLEMENTATION:-rmw_fastrtps_cpp}"
+  QRC_ROS2_PERCEPTION_PROJECT_ROOT: "/workspace/qrc_ros2_perception"
+  QT_X11_NO_MITSHM: "1"
+  PYTHONPATH: "/workspace/inspection/src"
+  QRC_RUNTIME_MODEL_ROOT: "${QRC_RUNTIME_MODEL_ROOT:-}"
+  QRC_OUTPUT_ROOT: "${QRC_OUTPUT_ROOT:-}"
+  QRC_CONFIG_ROOT: "${QRC_CONFIG_ROOT:-}"
+
+x-inspection-common: &inspection-common
+  hostname: qrc-release
+  working_dir: /workspace/inspection
+  stdin_open: true
+  tty: true
+  command: bash
+  privileged: true
+  group_add:
+    - video
+  devices:
+    - /dev/bus/usb:/dev/bus/usb
+  volumes:
+    - ./inspection:/workspace/inspection
+    - /run/udev:/run/udev:ro
+    - type: bind
+      source: /tmp/.X11-unix
+      target: /tmp/.X11-unix
+      bind:
+        create_host_path: true
+  device_cgroup_rules:
+    - "c 81:* rmw"
+    - "c 189:* rmw"
+  environment:
+    <<: *inspection-environment
+
+x-ros2-common: &ros2-common
+  hostname: qrc-release
+  working_dir: /workspace/qrc_ros2_perception
+  network_mode: "${DOCKER_NETWORK_MODE:-host}"
+  ipc: host
+  stdin_open: true
+  tty: true
+  privileged: true
+  group_add:
+    - video
+  devices:
+    - /dev/bus/usb:/dev/bus/usb
+  device_cgroup_rules:
+    - "c 81:* rmw"
+    - "c 189:* rmw"
+  volumes:
+    - ./qrc_ros2_perception:/workspace/qrc_ros2_perception
+    - ./inspection:/workspace/inspection:ro
+    - /run/udev:/run/udev:ro
+    - /tmp/.X11-unix:/tmp/.X11-unix:ro
+  environment:
+    <<: *ros2-environment
+  command: bash
+
+services:
+  inspection-sensing-release:
+    <<: *inspection-common
+    image: qrc-inspection-sensing-release:local
+    build:
+      context: ./inspection
+      dockerfile: Dockerfile
+
+  qrc-ros2-perception-release:
+    <<: *ros2-common
+    image: qrc-ros2-perception-release:local
+    build:
+      context: .
+      dockerfile: qrc_ros2_perception/Dockerfile
+
+  inspection-sensing-gpu-release:
+    <<: *inspection-common
+    image: qrc-inspection-sensing-release-gpu:local
+    profiles: ["gpu"]
+    build:
+      context: ./inspection
+      dockerfile: Dockerfile.runtime-gpu
+    shm_size: "8gb"
+    gpus: all
+    environment:
+      <<: *inspection-environment
+      NVIDIA_VISIBLE_DEVICES: "${NVIDIA_VISIBLE_DEVICES:-all}"
+      NVIDIA_DRIVER_CAPABILITIES: "${NVIDIA_DRIVER_CAPABILITIES:-compute,utility,video}"
+
+  qrc-ros2-perception-gpu-release:
+    <<: *ros2-common
+    image: qrc-ros2-perception-release-gpu:local
+    profiles: ["gpu"]
+    build:
+      context: .
+      dockerfile: qrc_ros2_perception/Dockerfile
+      args:
+        ONNXRUNTIME_PACKAGE: "onnxruntime-gpu>=1.18.0,<2.0"
+        INSTALL_CUDA_PYTHON_LIBS: "true"
+    gpus: all
+    environment:
+      <<: *ros2-environment
+      NVIDIA_VISIBLE_DEVICES: "${NVIDIA_VISIBLE_DEVICES:-all}"
+      NVIDIA_DRIVER_CAPABILITIES: "${NVIDIA_DRIVER_CAPABILITIES:-compute,utility,video}"

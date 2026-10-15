@@ -1,0 +1,28 @@
+%YAML:1.0
+
+# Unitree A2 states that the JT128 internal IMU and LiDAR have no physical
+# rotation or translation offset. Keep this physical calibration identity;
+# SuperOdom applies IMU-derived gravity alignment internally after IMU init.
+extrinsicRotation_imu_laser: !!opencv-matrix
+  rows: 3
+  cols: 3
+  dt: d
+  data: [1., 0., 0.,
+         0., 1., 0.,
+         0., 0., 1.]
+
+# Translation from the raw front JT128 LiDAR origin to the front JT128 IMU
+# origin. Unitree's structural design treats this as zero.
+extrinsicTranslation_imu_laser: !!opencv-matrix
+  rows: 3
+  cols: 1
+  dt: d
+  data: [0.0, 0.0, 0.0]
+
+imu_laser_rotation_offset: !!opencv-matrix
+  rows: 3
+  cols: 1
+  dt: d
+  data: [0.0, 0.0, 0.0]
+
+yaw_ratio: 0.0

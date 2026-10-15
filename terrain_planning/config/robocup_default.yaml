@@ -1,0 +1,67 @@
+isVerbose: false
+timer:
+  graphRate: 5.0
+  planningRate: 10.0
+map:
+  isPrebuiltMap: true
+  # Inject at launch time with map_path:= or mapConfigPath:=
+  # Keep hyperparameters scene-independent; do not create one YAML per map.
+  prebuiltMapPath: ""
+  waitPoseBeforeInit: true
+  isVoxelize: true
+  voxelSize: 0.10
+trg:
+  isPrebuiltTRG: false
+  prebuiltTRGPath: ""
+  isUpdate: true
+  # expandDist: ring-sampling radius matching Python expansion_radius 0.80 →
+  # C++ default kept smaller to match validated env default 0.65
+  expandDist: 0.65
+  robotSize: 0.32
+  sampleNum: 16
+  randomSeed: 7
+  deterministicSampling: true
+  # heightThreshold corresponds to Python max_height_step (validated 0.30 m)
+  heightThreshold: 0.30
+  # collisionThreshold: tighter than update threshold — validated 0.12 m in robocup_stack.env
+  collisionThreshold: 0.12
+  updateCollisionThreshold: 0.5
+  safetyFactor: 3.0
+  goalTolerance: 0.6
+  # native: original TRG graph A*.
+  # trg_astar: migrated Path_Planing_QRC A* cost on the existing TRG graph.
+  pathSearchMode: native
+trgAStar:
+  fallbackToNative: true
+  headingBins: 8
+  lengthWeight: 1.0
+  riskWeight: 3.0
+  climbWeight: 0.35
+  slopeWeight: 0.35
+  turnWeight: 0.2
+  heuristicWeight: 1.0
+  lengthScaleM: 0.42
+  climbScaleM: 0.50
+  slopeScaleTan: 0.7
+  turnScale: 0.25
+  maxEdgeClimbM: 0.0
+  maxEdgeSlopeTan: 0.0
+  # Rectangular body/footprint terms ported from Path_Planing_QRC/astar_go2w_rect.py.
+  # Only used when trg.pathSearchMode is trg_astar.
+  footprintCostEnabled: true
+  footprintRejectInvalid: false
+  robotLengthM: 0.70
+  robotWidthM: 0.43
+  maxBodyHeightDiffM: 0.70
+  maxBodyTiltDeg: 35.0
+  maxInteriorPenetrationM: 0.30
+  bodyHeightWeight: 0.35
+  bodyTiltWeight: 0.35
+  bodyPenetrationWeight: 0.25
+  bodyInvalidWeight: 4.0
+  footprintSampleStepM: 0.05
+  footprintEdgeBandM: 0.06
+boundary:
+  enabled: false
+  allowedAreaPath: ""
+  keepoutMargin: 0.0

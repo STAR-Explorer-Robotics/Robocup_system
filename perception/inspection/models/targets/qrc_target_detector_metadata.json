@@ -1,0 +1,9 @@
+{
+  "class_names": [
+    "hazmat_roi",
+    "qr_roi"
+  ],
+  "input_size": 640,
+  "model_family": "yolo",
+  "output_format": "xywh_conf_class"
+}

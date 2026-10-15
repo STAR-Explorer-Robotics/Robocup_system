@@ -1,0 +1,8 @@
+# Absolute Unitree BodyHeight target in meters.
+# A2/B2 SDK semantics: standing/walking body ground-clearance setting.
+# The adapter default safe range is [0.30, 0.50].
+float64 height_m
+---
+bool success
+string message
+float64 accepted_height_m

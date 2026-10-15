@@ -1,0 +1,85 @@
+{
+  "edition": "0.1-source-organization",
+  "changes": [
+    {
+      "path": "terrain_processing/ros/elevation_cloud_bridge.py",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "terrain_processing/ros/elevation_cloud_bridge.py",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "terrain_processing/ros/elevation_cloud_bridge.py",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "terrain_processing/pyproject.toml",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "terrain_processing/pyproject.toml",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "terrain_processing/trg_planner/online/__init__.py",
+      "change": "replace obsolete development-plan docstring"
+    },
+    {
+      "path": "terrain_processing/trg_planner/online/elevation_builder.py",
+      "change": "replace obsolete development-plan docstring"
+    },
+    {
+      "path": "localization/lightning_lm/CMakeLists.txt",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "localization/lightning_lm/package.xml",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "perception/inspection/pyproject.toml",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "perception/inspection/pyproject.toml",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "perception/qrc_ros2_perception/setup.py",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "perception/qrc_ros2_perception/package.xml",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "mission_control/setup.py",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "localization/superodom/super_odometry/config/hesai_driver/jt128_driver.yaml",
+      "change": "replace device-network addresses with documentation-only examples"
+    },
+    {
+      "path": "localization/superodom/super_odometry/config/hesai_driver/jt128_dual_driver.yaml",
+      "change": "replace device-network addresses with documentation-only examples"
+    },
+    {
+      "path": "terrain_planning/config/README.md",
+      "change": "release layout/metadata/documentation cleanup; no algorithm redesign"
+    },
+    {
+      "path": "localization/superodom/super_odometry/readme.md",
+      "change": "replace legacy workspace-specific documentation with release-local module guidance"
+    },
+    {
+      "path": "terrain_planning/cpp/trg_planner/README.md",
+      "change": "replace legacy workspace-specific documentation with release-local module guidance"
+    },
+    {
+      "path": "terrain_planning/pipelines/ros2/TRG_ROBOCUP_INTERFACE.md",
+      "change": "replace legacy workspace-specific documentation with release-local module guidance"
+    }
+  ]
+}

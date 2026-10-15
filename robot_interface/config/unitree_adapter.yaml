@@ -1,0 +1,60 @@
+unitree_adapter_node:
+  ros__parameters:
+    topics:
+      # This must be the collision-guarded velocity command.
+      input_cmd: /cmd_vel
+      last_cmd: /unitree_adapter/last_cmd
+      state: /unitree_adapter/state
+      status: /unitree_adapter/status
+
+    services:
+      set_enabled: /unitree_adapter/set_enabled
+      stop: /unitree_adapter/stop
+      damp: /unitree_adapter/damp
+      balance_stand: /unitree_adapter/balance_stand
+      recovery_stand: /unitree_adapter/recovery_stand
+      body_height: /unitree_adapter/body_height
+
+    backend:
+      # mock is the default for laptop builds and dry-run integration.
+      # Use sdk2 only after installing official unitree_sdk2 and rebuilding
+      # with -DROBOCUP_UNITREE_USE_SDK2=ON.
+      type: mock
+      robot_model: a2
+      network_interface: ""
+      domain_id: 0
+      sdk_timeout_sec: 2.0
+      balance_stand_on_connect: false
+      recovery_stand_on_connect: false
+
+    control:
+      rate_hz: 50.0
+      cmd_timeout_sec: 0.25
+      enabled_on_start: true
+      publish_status_rate_hz: 5.0
+      yaw_rate_sign: 1.0
+      zero_command_is_stop: true
+      zero_stop_repeat_period_sec: 0.25
+      max_consecutive_sdk_errors: 3
+
+    body_height:
+      # Disabled by default because BodyHeight changes A2/B2 stance height even
+      # when velocity streaming is otherwise stopped. Enable only in a launch
+      # profile that intentionally tests whole-body height adjustment.
+      enabled: false
+      min_m: 0.30
+      max_m: 0.50
+      stop_before_call: true
+      clear_velocity_on_request: true
+
+    limits:
+      # Conservative first-pass competition limits. Raise only after
+      # collision-guard and on-robot stop behavior are validated.
+      max_vx: 0.70
+      max_vy: 0.35
+      max_vyaw: 0.70
+      max_accel_x: 1.00
+      max_accel_y: 0.80
+      max_accel_yaw: 1.20
+      deadband_v: 0.02
+      deadband_w: 0.03

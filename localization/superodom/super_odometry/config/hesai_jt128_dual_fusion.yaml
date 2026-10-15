@@ -1,0 +1,27 @@
+dual_lidar_fusion_node:
+  ros__parameters:
+    front_lidar_topic: "/front/hesai/jt128/points"
+    rear_lidar_topic: "/rear/hesai/jt128/points"
+    merged_lidar_topic: "/hesai/jt128/dual_points_superodom"
+    output_frame: "front_hesai_jt128"
+
+    sync_tolerance_ms: 2.0
+    max_queue_size: 10
+    sort_by_time: true
+    # Keep pre-fusion range filtering explicitly disabled by default.
+    # min_range is ignored unless enable_min_range_filter is true. Use
+    # SuperOdom feature_extraction_node.min_range for LIO feature gating.
+    enable_min_range_filter: false
+    min_range: 0.0
+    extrinsic_rpy_degrees: false
+
+    # Keep SuperOdom's internal odometry in the front JT128 frame. Rear is
+    # transformed into the front JT128 frame using Unitree A2 structural-design
+    # values:
+    #        behind2front_T = [0.0, 0.00599, -0.61764]
+    #        behind2front_R = [-1,0,0; 0,1,0; 0,0,-1]
+    # These are design values, not hand-eye calibrated values.
+    front_lidar_to_output_xyzrpy: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    rear_lidar_to_output_xyzrpy: [0.0, 0.00599, -0.61764, 3.14159265359, 0.0, 3.14159265359]
+    front_ring_offset: 0
+    rear_ring_offset: 0

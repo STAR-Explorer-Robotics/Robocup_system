@@ -1,0 +1,81 @@
+goal_selector:
+  ros__parameters:
+    # 前进方向相对角度 (度), 0=启动时机器人正前方, +右, -左
+    heading_deg: 0.0
+    sector_half_angle: 1.0472
+    max_path_length: 50.0
+    path_validation_timeout: 2.0
+    path_goal_tolerance: 1.0
+    max_candidates_to_try: 8
+    soft_frontier_topic: /navigation/soft_frontiers
+    start_direction_topic: /mission/start_direction_point
+    min_start_direction_distance: 0.50
+    operator_target_enabled: true
+    frontier_sector_filter_enabled: true
+
+end_detector:
+  ros__parameters:
+    heading_deg: 0.0
+    sector_half_angle: 1.0472
+    reverse_half_angle: 1.0472
+    min_travel_distance: 3.0
+    hold_duration: 5.0
+    check_rate: 2.0
+    soft_frontier_topic: /navigation/soft_frontiers
+    start_direction_topic: /mission/start_direction_point
+    min_start_direction_distance: 0.50
+
+mission_fsm:
+  ros__parameters:
+    heading_deg: 0.0
+    sector_half_angle: 1.0472
+    navigate_timeout: 120.0
+    goal_select_timeout: 20.0
+    arrive_settle_duration: 2.0
+    end_hold_duration: 5.0
+    max_retry_count: 3
+    max_path_length: 50.0
+    min_travel_distance: 3.0
+    control_rate: 10.0
+    allowed_area_topic: /navigation/detected_allowed_area
+    auto_recover_timeout: 5.0
+    rpp_input_stale_grace: 2.0
+    require_start_signal: false
+    start_direction_topic: /mission/start_direction_point
+    min_start_direction_distance: 0.50
+    frontier_source: trg_markers
+    goal_pose_topic: /goal_pose
+    trg_path_topic: /trg/output/path
+    rpp_state_topic: /rpp/state
+    global_trg_topic: /trg/debug/global_trg
+    path_source_use_planned_service: /mission/path_source/use_planned
+    path_source_use_recorded_service: /mission/path_source/use_recorded
+
+recorded_path_manager:
+  ros__parameters:
+    odom_topic: /robot_center/odom
+    output_path_topic: /mission/recorded_path/active
+    preview_path_topic: /mission/recorded_path/preview
+    status_topic: /mission/recorded_path/status
+    start_recording_service: /mission/recorded_path/start_recording
+    stop_recording_service: /mission/recorded_path/stop_recording
+    use_recorded_path_service: /mission/recorded_path/use
+    min_record_spacing: 0.08
+    min_path_points: 3
+    smooth_enabled: true
+    smooth_resample_spacing: 0.18
+    smooth_window: 5
+    smooth_passes: 3
+    smooth_max_offset: 0.15
+    smooth_prune_reversals: true
+    smooth_prune_max_segment: 0.35
+    smooth_prune_reverse_cos: -0.5
+
+path_source_mux:
+  ros__parameters:
+    planned_path_topic: /trg/output/path
+    recorded_path_topic: /mission/recorded_path/active
+    output_path_topic: /mission/follower_path
+    status_topic: /mission/path_source/status
+    use_planned_service: /mission/path_source/use_planned
+    use_recorded_service: /mission/path_source/use_recorded

@@ -1,0 +1,28 @@
+trg_ros2_node:
+  ros__parameters:
+    ros2:
+      isDebug: true
+      frameId: "map"
+      publishRate: 10.0
+      debugRate: 1.0
+      replan:
+        enabled: true
+        checkRate: 2.0
+        minInterval: 2.0
+        minTranslation: 0.8
+        minYaw: 0.35
+      topic:
+        input:
+          egoPose: "/trg/input/pose"
+          egoOdom: "/laser_odometry"
+          obsCloud: "/laser_cloud_map"
+          goal: "/goal_pose"
+        output:
+          preMap: "/trg/output/prebuilt_map"
+          goal: "/trg/output/goal"
+          path: "/trg/output/path"
+        debug:
+          globalTRG: "/trg/debug/global_trg"
+          localTRG: "/trg/debug/local_trg"
+          obsMap: "/trg/debug/obs_map"
+          pathInfo: "/trg/debug/path_info"

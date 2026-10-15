@@ -1,0 +1,20 @@
+/**:
+  ros__parameters:
+    paper_repro:
+      # Source code original state: ON.
+      # The public determinePredictionSource() path already switches predictors
+      # based on degeneracy state when this is true.
+      enable_prediction_source_switching: true
+
+      # Source code original state: ON.
+      # The public LidarSlam::shouldAddAbsolutePoseConstraints() path already
+      # exists, but it only activates for VIO_ODOM + isDegenerate.
+      enable_active_degeneracy_absolute_pose_constraint: true
+
+      # Source code original state: OFF.
+      # This exact threshold gate exists in LidarSlam.cpp as commented code.
+      enable_degeneracy_state_from_uncertainty_gate: false
+
+      # Source code original state: OFF.
+      # This exact histogram gate exists in LidarSlam.cpp as commented code.
+      enable_degeneracy_state_from_histogram_gate: false

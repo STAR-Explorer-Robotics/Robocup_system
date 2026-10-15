@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>qrc_ros2_perception</name>
+  <version>0.1.0</version>
+  <description>ROS2 Humble sensing bridge for the QRC inspection pipeline.</description>
+  <maintainer email="152578797+Ancientree-Bichy@users.noreply.github.com">Ancientree-Bichy</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <depend>launch</depend>
+  <depend>launch_ros</depend>
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>cv_bridge</depend>
+
+  <exec_depend>image_view</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

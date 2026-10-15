@@ -1,0 +1,38 @@
+# Generated files
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.mplcache/
+*.egg-info/
+**/build/
+**/install/
+**/log/
+**/logs/
+**/outputs/
+**/run_output/
+**/bin/
+**/.cache/
+.venv/
+venv/
+.DS_Store
+
+# Runtime data and dependency archives
+*.bag
+*.db3
+*.mcap
+*.pcd
+*.ply
+*.zip
+*.tar
+*.tar.gz
+
+# Local agent state and manuscript synchronization
+.omx
+.omx-*
+.omx.*
+.codex/
+.agents/
+SSRR_2026_SPARC/
+

@@ -1,0 +1,142 @@
+task:
+  type: sensing
+
+source:
+  type: image
+  input_path: samples/qr_sample.png
+  frame_stride: 1
+  loop: false
+  realsense:
+    enabled: true
+    width: 1280
+    height: 720
+    fps: 30
+
+output:
+  root_dir: outputs
+  save_overlay: true
+  save_jsonl: true
+  save_summary: true
+  debug_visualization: true
+
+preview:
+  enabled: false
+  mode: none
+  window_name: QRC Target Detector Preview
+  wait_key_delay_ms: 1
+
+detector:
+  backend: apriltag
+  apriltag_family: tagStandard41h12
+  enable_preprocess_fallback: true
+  try_curved: false
+  enable_candidate_decode_fallback: true
+  warped_patch_size: 512
+  qr_roi_decode_pad_px: 24
+  qr_roi_decode_pad_ratio: 0.18
+  qr_roi_decode_white_border_px: 24
+  qr_roi_decode_scale: 2.0
+
+stabilizer:
+  window_size: 5
+  min_votes: 3
+  stability_threshold: 0.6
+
+target_detector:
+  enabled: true
+  model_path: models/targets/qrc_target_detector.onnx
+  metadata_path: models/targets/qrc_target_detector_metadata.json
+  classes:
+    - hazmat_roi
+    - qr_roi
+  input_size: 640
+  score_threshold: 0.20
+  nms_iou_threshold: 0.45
+  max_detections: 20
+  model_family: yolo
+  output_format: xywh_conf_class
+  execution_providers:
+    - CUDAExecutionProvider
+    - CPUExecutionProvider
+  missing_model_policy: fail_fast
+  runtime_unavailable_policy: fail_fast
+  metadata_mismatch_policy: fail_fast
+
+hazmat:
+  mode: hybrid
+  labels_file: data/manifests/hazmat_labels.yaml
+  active_label_set: hazmat2020_full_15
+  detector:
+    backend: dl
+    allow_classical_fallback: true
+    warped_patch_size: 256
+    min_contour_area: 700
+    canny_low_threshold: 40
+    canny_high_threshold: 140
+    morph_kernel_size: 5
+    approx_epsilon_factor: 0.04
+  classifier:
+    backend: prototype
+    backbone: mobilenet_v3_small
+    model_path: models/hazmat/hazmat_classifier.onnx
+    prototypes_path: models/hazmat/hazmat_prototypes.npz
+    input_size: 224
+    execution_providers:
+      - CUDAExecutionProvider
+      - CPUExecutionProvider
+    top1_min_score: 0.45
+    top1_top2_min_margin: 0.01
+    prototype_min_similarity: 0.4
+  color:
+    enabled: true
+    profile_path: data/processed/hazmat_color_profiles_standard.json
+    auto_generate_standard_profile: false
+  ocr:
+    enabled: false
+    backend: none
+    min_crop_size: 48
+    run_every_n_frames: 1
+    max_ocr_bonus: 0.20
+    strong_keyword_bonus: 0.18
+    weak_keyword_bonus: 0.06
+    strong_number_bonus: 0.20
+    weak_number_bonus: 0.05
+    medium_number_bonus: 0.12
+    fuzzy_match_enabled: true
+    fuzzy_match_threshold: 0.78
+    allow_ocr_only_decision: false
+    allow_ocr_top2_flip: true
+    high_confidence_ocr_override: false
+  fusion:
+    enabled: true
+    color_enabled: true
+    ocr_enabled: true
+    classifier_weight: 0.85
+    color_weight: 0.15
+    ocr_weight: 0.10
+    max_color_delta: 0.12
+    max_ocr_bonus: 0.20
+    allow_color_top2_flip: true
+    allow_color_accept_gated_classifier: true
+    allow_color_only_decision: false
+    allow_ocr_top2_flip: true
+    allow_ocr_only_decision: false
+    high_confidence_ocr_override: false
+    min_fused_score: 0.45
+    min_fused_margin: 0.01
+    high_confidence_classifier_score: 0.75
+    high_confidence_classifier_margin: 0.20
+  debug:
+    write_color_evidence_files: false
+    include_full_color_scores: false
+    include_color_histograms: false
+    write_ocr_evidence_files: false
+    include_full_ocr_scores: false
+  stabilizer:
+    window_size: 10
+    min_votes: 5
+    stability_threshold: 0.5
+
+runtime:
+  max_frames:
+  log_level: INFO

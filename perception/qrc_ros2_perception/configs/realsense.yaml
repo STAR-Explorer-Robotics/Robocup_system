@@ -1,0 +1,24 @@
+image_topic: /camera/camera/color/image_raw
+camera_info_topic: /camera/camera/color/camera_info
+input_qos: sensor_data
+inspection_config: ../inspection/configs/sensing_runtime_dl.yaml
+publish_overlay: true
+overlay_publish_fps: 10.0
+publish_result_json: true
+publish_latest_confirmed_json: true
+max_processing_fps:
+max_frames:
+drop_frames_when_busy: true
+overlay_topic: /qrc/sensing/overlay/image_raw
+result_topic: /qrc/sensing/result_json
+latest_confirmed_topic: /qrc/sensing/latest_confirmed_json
+latest_confirmed_overlay_topic: /qrc/sensing/latest_confirmed_overlay/image_raw
+status_topic: /qrc/sensing/status
+status_period_sec: 1.0
+save_outputs: true
+output_root: outputs
+save_overlay_video: true
+save_confirmed_overlays: true
+latest_result_write_period_sec: 0.0
+output_video_fps: 10.0
+log_level: INFO

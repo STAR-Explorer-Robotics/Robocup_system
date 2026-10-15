@@ -1,0 +1,142 @@
+version: 1
+template_root: samples/Hazmat2020
+default_label_set: hazmat2020_full_15
+label_sets:
+  hazmat2020_full_15:
+  - 1.1-explosives
+  - 1.5-blasting-agents
+  - 2-flammable-gas
+  - 2-non-flammable-gas
+  - 2-oxygen
+  - 3-fuel-oil
+  - 4-dangerous-when-wet
+  - 4-flammable-solid
+  - 4-spontaneously-combustible
+  - 5.1-oxidizer
+  - 5.2-organic-peroxide
+  - 6-inhalation-hazard
+  - 6-poison
+  - 7-radioactive
+  - 8-corrosive
+  competition_active: []
+labels:
+- id: 0
+  key: 1.1-explosives
+  filename: placard-1.1-explosives.png
+  display_name: 1.1 Explosives
+  official_name: Explosives 1.1
+  aliases:
+  - explosives-1.1
+  - explosives
+- id: 1
+  key: 1.5-blasting-agents
+  filename: placard-1.5-blasting-agents.png
+  display_name: 1.5 Blasting Agents
+  official_name: Blasting Agents 1.5
+  aliases:
+  - blasting-agents-1.5
+  - blasting-agents
+- id: 2
+  key: 2-flammable-gas
+  filename: placard-2-flammable-gas.png
+  display_name: 2 Flammable Gas
+  official_name: Flammable Gas
+  aliases:
+  - flammable-gas
+  - class-2-flammable-gas
+- id: 3
+  key: 2-non-flammable-gas
+  filename: placard-2-non-flammable-gas.png
+  display_name: 2 Non-Flammable Gas
+  official_name: Non-Flammable Gas
+  aliases:
+  - non-flammable-gas
+  - class-2-non-flammable-gas
+- id: 4
+  key: 2-oxygen
+  filename: placard-2-oxygen.png
+  display_name: 2 Oxygen
+  official_name: Oxygen
+  aliases:
+  - oxygen
+  - oxidizing-gas
+- id: 5
+  key: 3-fuel-oil
+  filename: placard-3-fuel-oil.png
+  display_name: 3 Fuel Oil
+  official_name: Fuel Oil
+  aliases:
+  - fuel-oil
+  - class-3-fuel-oil
+- id: 6
+  key: 4-dangerous-when-wet
+  filename: placard-4-dangerous-when-wet.png
+  display_name: 4 Dangerous When Wet
+  official_name: Dangerous When Wet
+  aliases:
+  - dangerous-when-wet
+  - class-4-dangerous-when-wet
+- id: 7
+  key: 4-flammable-solid
+  filename: placard-4-flammable-solid.png
+  display_name: 4 Flammable Solid
+  official_name: Flammable Solid
+  aliases:
+  - flammable-solid
+  - class-4-flammable-solid
+- id: 8
+  key: 4-spontaneously-combustible
+  filename: placard-4-spontaneously-combustible.png
+  display_name: 4 Spontaneously Combustible
+  official_name: Spontaneously Combustible
+  aliases:
+  - spontaneously-combustible
+  - class-4-spontaneously-combustible
+- id: 9
+  key: 5.1-oxidizer
+  filename: placard-5.1-oxidizer.png
+  display_name: 5.1 Oxidizer
+  official_name: Oxidizer
+  aliases:
+  - oxidizer
+  - class-5.1-oxidizer
+- id: 10
+  key: 5.2-organic-peroxide
+  filename: placard-5.2-organic-peroxide.png
+  display_name: 5.2 Organic Peroxide
+  official_name: Organic Peroxide
+  aliases:
+  - organic-peroxide
+  - class-5.2-organic-peroxide
+- id: 11
+  key: 6-inhalation-hazard
+  filename: placard-6-inhalation-hazard.png
+  display_name: 6 Inhalation Hazard
+  official_name: Inhalation Hazard
+  aliases:
+  - inhalation-hazard
+  - class-6-inhalation-hazard
+- id: 12
+  key: 6-poison
+  filename: placard-6-poison.png
+  display_name: 6 Poison
+  official_name: Poison
+  aliases:
+  - poison
+  - class-6-poison
+- id: 13
+  key: 7-radioactive
+  filename: placard-7-radioactive.png
+  display_name: 7 Radioactive
+  official_name: Radioactive
+  aliases:
+  - radioactive
+  - class-7-radioactive
+- id: 14
+  key: 8-corrosive
+  filename: placard-8-corrosive.png
+  display_name: 8 Corrosive
+  official_name: Corrosive
+  aliases:
+  - corrosive
+  - class-8-corrosive

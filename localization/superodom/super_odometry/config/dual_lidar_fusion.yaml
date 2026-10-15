@@ -1,0 +1,25 @@
+dual_lidar_fusion_node:
+  ros__parameters:
+    front_lidar_topic: "/front/lidar_points"
+    rear_lidar_topic: "/rear/lidar_points"
+    merged_lidar_topic: "/dual_lidar/points"
+    output_frame: "sensor"
+
+    sync_tolerance_ms: 2.0
+    max_queue_size: 10
+    sort_by_time: true
+
+    # False: roll/pitch/yaw are radians. True: degrees.
+    extrinsic_rpy_degrees: false
+
+    # Transform convention:
+    #   p_output = R_output_lidar * p_lidar + t_output_lidar
+    # Each value is [x, y, z, roll, pitch, yaw].
+    # Keep identity placeholders until the LiDAR-to-output extrinsics are calibrated.
+    front_lidar_to_output_xyzrpy: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    rear_lidar_to_output_xyzrpy: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    # Usually keep zero. Only offset rings if downstream visualization needs
+    # front/rear scan lines separated.
+    front_ring_offset: 0
+    rear_ring_offset: 0

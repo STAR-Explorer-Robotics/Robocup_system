@@ -1,0 +1,54 @@
+unitree_adapter_node:
+  ros__parameters:
+    topics:
+      input_cmd: /cmd_vel
+      last_cmd: /unitree_adapter/last_cmd
+      state: /unitree_adapter/state
+      status: /unitree_adapter/status
+
+    services:
+      set_enabled: /unitree_adapter/set_enabled
+      stop: /unitree_adapter/stop
+      damp: /unitree_adapter/damp
+      balance_stand: /unitree_adapter/balance_stand
+      recovery_stand: /unitree_adapter/recovery_stand
+      body_height: /unitree_adapter/body_height
+
+    backend:
+      type: sdk2
+      robot_model: go2w
+      network_interface: ""
+      domain_id: 0
+      sdk_timeout_sec: 2.0
+      balance_stand_on_connect: false
+      recovery_stand_on_connect: false
+
+    control:
+      rate_hz: 50.0
+      cmd_timeout_sec: 0.25
+      enabled_on_start: true
+      publish_status_rate_hz: 5.0
+      yaw_rate_sign: 1.0
+      zero_command_is_stop: true
+      zero_stop_repeat_period_sec: 0.25
+      max_consecutive_sdk_errors: 3
+
+    body_height:
+      # Go2-W SportClient does not expose BodyHeight in the installed SDK2
+      # headers; keep the service disabled for this robot profile.
+      enabled: false
+      min_m: 0.30
+      max_m: 0.50
+      stop_before_call: true
+      clear_velocity_on_request: true
+
+    limits:
+      # Go2-W navigation profile. Keep this slower than the A2 profile.
+      max_vx: 0.25
+      max_vy: 0.18
+      max_vyaw: 0.45
+      max_accel_x: 0.45
+      max_accel_y: 0.40
+      max_accel_yaw: 0.70
+      deadband_v: 0.02
+      deadband_w: 0.03

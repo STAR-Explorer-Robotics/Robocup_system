@@ -1,0 +1,66 @@
+rpp_offline_sim_node:
+  ros__parameters:
+    topics:
+      # Same path topic produced by TRG-planner and consumed by rpp_follower_node.
+      path: /trg/output/path
+      odom: /laser_odometry
+      cmd_vel: /cmd_vel
+      trajectory: /rpp/offline_sim/trajectory
+      initialpose: /initialpose
+      state: /rpp/state
+      debug: /rpp/debug
+    services:
+      set_enabled: /rpp/set_enabled
+
+    sim:
+      rate_hz: 50.0
+      max_duration_sec: 120.0
+      output_dir: /tmp/trg_path_follower_trg_external_sim
+      stop_on_goal: true
+      enable_follower: true
+      trajectory_publish_period_sec: 0.2
+      command_timeout_sec: 0.5
+
+    initial_pose:
+      # Match this to the initial pose expected by the TRG test.
+      x: 0.0
+      y: 0.0
+      yaw: 0.0
+
+    path:
+      # Do not publish a generated path; subscribe to TRG's /trg/output/path.
+      source: external
+      frame_id: map
+
+    actuation:
+      response_time_constant_sec: 0.12
+      max_forward: 0.8
+      max_lateral: 0.5
+      max_yaw_rate: 1.0
+      forward_scale: 1.0
+      lateral_scale: 1.0
+      yaw_rate_scale: 1.0
+
+    noise:
+      enabled: false
+      seed: 7
+      command_scale_stddev: 0.0
+      body_velocity_stddev_x: 0.0
+      body_velocity_stddev_y: 0.0
+      yaw_rate_stddev: 0.0
+      odom_position_stddev: 0.0
+      odom_yaw_stddev: 0.0
+      odom_velocity_stddev: 0.0
+
+    terrain:
+      enabled: false
+      world_drift_x: 0.0
+      world_drift_y: 0.0
+      yaw_drift_rate: 0.0
+      min_x: -1000000000.0
+      max_x: 1000000000.0
+      min_y: -1000000000.0
+      max_y: 1000000000.0
+
+    goal:
+      tolerance_m: 0.25
