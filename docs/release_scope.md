@@ -16,9 +16,9 @@ Building all modules, running an integrated navigation system, and executing on 
 
 ## Included and excluded
 
-Included: estimator forks, geometry/terrain processing, graph planning, path tracking, the robot command adapter, task coordination, sensing runtime, representative parameters, message/service definitions, and existing small C++ component tests.
+Included: estimator forks, geometry/terrain processing, graph planning, path tracking, the robot command adapter, task coordination, sensing runtime, representative parameters, message/service definitions, and existing small C++ component tests. The subsequent [terrain asset release](../assets/terrains/README.md) adds four MuJoCo terrains and their preview image.
 
-Excluded: competition launch orchestration, remote-host/IP setup, calibration sessions and their results, recorded runs, datasets/maps, experimental batch scripts, prebuilt tools, dependency archives, large upstream demonstration media, nested Git histories and agent instructions/state.
+Excluded: competition launch orchestration, remote-host/IP setup, calibration sessions and their results, recorded runs, other datasets/maps, experimental batch scripts, prebuilt tools, dependency archives, large upstream demonstration media, nested Git histories and agent instructions/state.
 
 Inference model files already supplied with the sensing runtime are retained for continuity. Their file hashes are recorded; their presence is not an additional accuracy or provenance claim.
 

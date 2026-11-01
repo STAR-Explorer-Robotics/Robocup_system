@@ -1,0 +1,106 @@
+{
+  "source_project": "ROBIO2026 / RB-TRG evaluation terrains",
+  "scope": "Part of the terrains at RoboCup/LRC",
+  "geometry": "Original evaluation heightfields, copied byte-for-byte; no smoothing or height scaling changes.",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "source": "simulation/generated/scene1/heightfield.bin",
+      "heightfield": "scene1/heightfield.bin",
+      "sha256": "09ad81bf07ad0313b8474086c997bba85d40c92fd2a5fcb3f37d8d51e8b570f1",
+      "scene_xml": "scene1/scene.xml"
+    },
+    {
+      "scene_id": 2,
+      "source": "simulation/generated/scene2/heightfield.bin",
+      "heightfield": "scene2/heightfield.bin",
+      "sha256": "c9a3100359ca1932912f0c6cc3c6924ad1944d56bc6ed214f282ec1ec1382a40",
+      "scene_xml": "scene2/scene.xml"
+    },
+    {
+      "scene_id": 3,
+      "source": "simulation/generated/scene3/heightfield.bin",
+      "heightfield": "scene3/heightfield.bin",
+      "sha256": "f11834d1cec19e86c3230105ca4020e1789eb219ad315eadb86ce87bfd8b3e8f",
+      "scene_xml": "scene3/scene.xml"
+    },
+    {
+      "scene_id": 4,
+      "source": "simulation/generated/scene4/heightfield.bin",
+      "heightfield": "scene4/heightfield.bin",
+      "sha256": "b202013381e66d658c145631d81381a789e32f910e0c1e48cbff4ed218a76372",
+      "scene_xml": "scene4/scene.xml"
+    }
+  ],
+  "preview": {
+    "file": "../../docs/images/rb_trg_terrains.png",
+    "sha256": "c9f3c870bfbe3bd992575a0bba678fd3b62d921b17f181a0831da829ffa001e3",
+    "size_px": [
+      3840,
+      2160
+    ],
+    "renderer": "MuJoCo 3.3.6",
+    "views": [
+      {
+        "scene": 1,
+        "view": "overview",
+        "camera": {
+          "lookat": [
+            2.4667503647878766,
+            1.6991972157359125,
+            0.29538951185531914
+          ],
+          "distance": 7.144269883848064,
+          "azimuth": -90.0,
+          "elevation": -57.0,
+          "fovy": 38.0
+        }
+      },
+      {
+        "scene": 2,
+        "view": "overview",
+        "camera": {
+          "lookat": [
+            2.4667503647878766,
+            1.7303013214841485,
+            0.24990796064957976
+          ],
+          "distance": 7.1665772979777245,
+          "azimuth": -90.0,
+          "elevation": -57.0,
+          "fovy": 38.0
+        }
+      },
+      {
+        "scene": 3,
+        "view": "overview",
+        "camera": {
+          "lookat": [
+            2.4170592132396997,
+            1.713639799281955,
+            0.2661657561548054
+          ],
+          "distance": 7.063856381408741,
+          "azimuth": -90.0,
+          "elevation": -57.0,
+          "fovy": 38.0
+        }
+      },
+      {
+        "scene": 4,
+        "view": "overview",
+        "camera": {
+          "lookat": [
+            1.272260106150061,
+            1.6134274167567493,
+            0.8359477166086435
+          ],
+          "distance": 6.7347902676036,
+          "azimuth": -90.0,
+          "elevation": -57.0,
+          "fovy": 38.0
+        }
+      }
+    ]
+  }
+}

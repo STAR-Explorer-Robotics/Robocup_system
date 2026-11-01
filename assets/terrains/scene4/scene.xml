@@ -1,0 +1,19 @@
+<mujoco model="scene4_terrain_asset">
+  <statistic center="1.27 1.1400000000000001 1.143395096063614" extent="4.54" />
+  <visual>
+    <global offwidth="3840" offheight="2160" fovy="38" azimuth="-90" elevation="-57" />
+    <quality shadowsize="4096" offsamples="4" />
+    <headlight ambient="0.3 0.3 0.3" diffuse="0.35 0.35 0.35" specular="0.05 0.05 0.05" />
+    <map znear="0.005" zfar="50" shadowscale="1.5" />
+  </visual>
+  <asset>
+    <texture name="white_background" type="skybox" builtin="flat" rgb1="1 1 1" rgb2="1 1 1" width="256" height="1536" />
+    <material name="terrain_material" rgba="0.58 0.64 0.69 1" specular="0.12" shininess="0.15" reflectance="0" />
+    <hfield name="evaluation_heightfield" file="heightfield.bin" size="2.27 2.14 2.3334423899650574 0.1" />
+  </asset>
+  <worldbody>
+    <light name="key" directional="true" pos="-1.73 5.140000000000001 8" dir="0.5 -0.65 -1" diffuse="0.6 0.6 0.6" specular="0.08 0.08 0.08" castshadow="true" />
+    <light name="fill" directional="true" pos="5.27 -1.8599999999999999 6" dir="-0.5 0.3 -1" diffuse="0.16 0.16 0.16" specular="0 0 0" castshadow="false" />
+    <geom name="evaluation_terrain" type="hfield" hfield="evaluation_heightfield" pos="1.27 1.1400000000000001 -0.023326098918914795" material="terrain_material" friction="0.8 0.02 0.01" />
+  </worldbody>
+</mujoco>

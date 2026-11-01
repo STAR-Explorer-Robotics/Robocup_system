@@ -4,6 +4,16 @@ A curated source collection for rescue-robot navigation and perception, prepared
 
 This first edition organizes the current development checkout into clear modules. It preserves the algorithm implementations and representative configurations, with compact documentation of their interfaces and origins. It is a **source organization release**; the reorganized tree has not been validated as a complete runnable deployment.
 
+## RB-TRG and open terrain assets
+
+Our [RB-TRG paper and code](https://github.com/ZhiqiaoGuo/RB-TRG) introduce robot-body-aware terrain graph planning for wheeled-legged robots, accounting for the robot's footprint during traversal and turns. We also open-source the [four terrain assets](assets/terrains/README.md) used in our experiments, shown below in MuJoCo. These represent  part of the terrains at RoboCup/LRC.
+
+![MuJoCo screenshots of four released terrain assets, representing part of the terrains at RoboCup/LRC](docs/images/rb_trg_terrains.png)
+
+The additional scene below comes from an early LRC edition (ICRA 2024 QRC) and includes the complete terrain layout from that edition. Its original MuJoCo model is available in [Unitree's `qrc_map_sloped.xml`](https://github.com/unitreerobotics/unitree_mujoco/blob/main/unitree_robots/a2/qrc_map_sloped.xml).
+
+![MuJoCo screenshot of the complete early LRC terrain layout from ICRA 2024 QRC](docs/images/early_lrc_full_terrain.png)
+
 ## Modules
 
 | Directory | Responsibility | Main implementation |
@@ -29,9 +39,9 @@ The original development workspace and its nested Git histories are separate fro
 
 ## Scope
 
-Included: algorithm source, message/service definitions, representative configurations, module-level launch files, inference assets already present in the source checkout, and small existing component tests.
+Included: algorithm source, message/service definitions, representative configurations, module-level launch files, inference assets already present in the source checkout, small existing component tests, and the four released terrain assets linked above.
 
-Not included: the manuscript and reviewer comments, competition operation scripts, SSH/network deployment configuration, recorded runs, datasets, maps, build/install trees, precompiled binaries, dependency archives, or agent orchestration state.
+Not included: the manuscript and reviewer comments, competition operation scripts, SSH/network deployment configuration, recorded runs, other datasets and maps, build/install trees, precompiled binaries, dependency archives, or agent orchestration state.
 
 The physical robot's locomotion controller is accessed through the vendor SDK. No gait-generation or low-level balancing algorithm is claimed here. The navigation task flow includes operator-selected targets and stage transitions.
 

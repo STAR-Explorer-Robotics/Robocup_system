@@ -1,0 +1,15 @@
+{
+  "base_thickness_m": 0.1,
+  "cols": 347,
+  "rows": 226,
+  "min_x": -1.0,
+  "max_x": 5.92,
+  "min_y": -1.0,
+  "max_y": 3.5,
+  "min_z": 0.0,
+  "max_z": 1.12363862991333,
+  "resolution_m": 0.02,
+  "execution_row_y_direction": "min_to_max",
+  "construction": "planner NPZ elevation map reused directly for MuJoCo heightfield",
+  "binary_path": "heightfield.bin"
+}
